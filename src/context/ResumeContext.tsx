@@ -1,4 +1,4 @@
-import React, {useState, createContext} from "react";
+import React, {useState} from "react";
 import {ResumeData} from "../interfaces/ResumeProps";
 
 interface ResumeProviderProps {
@@ -16,6 +16,14 @@ function ResumeProvider({children}: ResumeProviderProps) {
   const [resumeData, setResumeData] = useState<ResumeData>({
     experience: [],
     education: [],
+    personalInfo: [
+      {
+        name: "",
+        email: "",
+        phone: "",
+        address: "",
+      },
+    ],
   });
 
   return (

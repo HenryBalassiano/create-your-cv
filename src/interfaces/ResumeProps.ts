@@ -8,6 +8,12 @@ export interface Experience {
      id:string
 
   }
+  export interface PersonalInfo{
+    name:string, 
+    email:string,
+    phone: string,
+    address:string 
+  }
   export  interface Education {
     degree: string;
     school: string;
@@ -19,4 +25,5 @@ export interface Experience {
  export interface ResumeData {
     experience: Experience[];
     education: Education[];
+    personalInfo:PersonalInfo[]
   }
