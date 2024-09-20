@@ -1,0 +1,15 @@
+.resume-wrapper {
+  height: 150px;
+  width: 100%;
+  background-color: rgb(78, 78, 239);
+}
+
+.cv {
+  width: 800px;
+  height: 1000px;
+  background-color: white;
+  display: flex;
+  align-items: self-start;
+  display: flex;
+  flex-direction: column;
+}
