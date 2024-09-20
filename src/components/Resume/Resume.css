@@ -1,7 +1,10 @@
 .resume-wrapper {
   height: 150px;
   width: 100%;
-  background-color: rgb(78, 78, 239);
+  background-color: #116dc3;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .cv {
@@ -12,4 +15,43 @@
   align-items: self-start;
   display: flex;
   flex-direction: column;
+  font-family: Archivo, Arial, sans-serif;
+}
+
+.resume-container {
+  padding: 50px;
+  h1 {
+    margin-bottom: 30px;
+  }
+}
+.page-container {
+  line-height: 0;
+  font-weight: 700;
+  font-size: 17px;
+  margin-bottom: 50px;
+  h5 {
+    color: rgba(0, 0, 0, 0.58);
+  }
+}
+.personal-info-sec {
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.details {
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+li {
+  margin-bottom: 20px;
+  list-style-type: none;
+  font-weight: 500;
+}
+ul {
+  display: inline;
 }

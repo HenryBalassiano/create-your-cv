@@ -10,7 +10,7 @@ interface ExperienceForm {
 export default function EducationForm() {
   const {resumeData, setResumeData} = useResumeContext();
   const handleFormData = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     id: string
   ) => {
     const {name, value} = e.target;
@@ -70,6 +70,15 @@ export default function EducationForm() {
                 name="location"
                 onChange={(e) => handleFormData(e, item.id)}
               />
+            </label>{" "}
+            <label>
+              Description
+              <textarea
+                name="description"
+                onChange={(e) => handleFormData(e, item.id)}
+              >
+                {" "}
+              </textarea>
             </label>{" "}
           </form>
           <button onClick={(e) => deleteExperience(e, item.id)}>Delete</button>

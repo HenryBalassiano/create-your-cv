@@ -13,10 +13,22 @@ export default function PersonalInfo() {
   };
   return (
     <div className="personal-info">
-      <input type="text" name="name" onChange={handleInfo} />{" "}
-      <input type="text" name="email" onChange={handleInfo} />
-      <input type="text" name="phone" onChange={handleInfo} />
-      <input type="text" name="address" onChange={handleInfo} />
+      <label>
+        Name
+        <input type="text" name="name" onChange={handleInfo} />
+      </label>{" "}
+      <label>
+        Email
+        <input type="text" name="email" onChange={handleInfo} />
+      </label>{" "}
+      <label>
+        Phone
+        <input type="text" name="phone" onChange={handleInfo} />
+      </label>{" "}
+      <label>
+        Address
+        <input type="text" name="address" onChange={handleInfo} />
+      </label>{" "}
     </div>
   );
 }
