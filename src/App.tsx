@@ -24,19 +24,31 @@ export default function App() {
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const imgRatio = imgProps.height / imgProps.width;
       const adjustedHeight = imgRatio * pdfWidth;
-      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, adjustedHeight);
-      pdf.save(`degree.pdf`);
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth + 5, adjustedHeight);
+      pdf.save(
+        `${
+          resumeData.personalInfo[0].name
+            ? resumeData.personalInfo[0].name
+            : "undefined"
+        }.pdf`
+      );
     });
   };
 
   console.log(resumeData);
   return (
     <div className="app">
-      <div>
-        <div ref={cvRef}>
-          <Resume />
+      <div className="preview">
+        <div className="preview-wrapper">
+          <div ref={cvRef}>
+            <Resume />
+          </div>
+          <div className="pdf-container">
+            <button id="download-pdf" onClick={downloadCVPdf}>
+              Download PDF
+            </button>
+          </div>
         </div>
-        <button onClick={downloadCVPdf}>Download PDF</button>
       </div>
       <EditSection />
     </div>

@@ -1,7 +1,11 @@
 import "./Resume.css";
 import useResumeContext from "../../hooks/useResumeContext.tsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faMobileScreen} from "@fortawesome/free-solid-svg-icons";
 import {faLocationDot} from "@fortawesome/free-solid-svg-icons";
+import {faPaperPlane} from "@fortawesome/free-regular-svg-icons";
+import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
+
 export default function Resume() {
   const {resumeData} = useResumeContext();
   return (
@@ -16,8 +20,23 @@ export default function Resume() {
               </div>
               {(info.email || info.phone || info.address) && (
                 <div className="details">
-                  <h4> {info.email} </h4>
-                  <h4> {info.phone}</h4> <h4> {info.address}</h4>{" "}
+                  {info.email && (
+                    <h4>
+                      {" "}
+                      <FontAwesomeIcon icon={faPaperPlane} /> {info.email}{" "}
+                    </h4>
+                  )}
+                  {info.phone && (
+                    <h4>
+                      <FontAwesomeIcon icon={faMobileScreen} /> {info.phone}
+                    </h4>
+                  )}{" "}
+                  {info.address && (
+                    <h4>
+                      {" "}
+                      <FontAwesomeIcon icon={faEnvelope} /> {info.address}
+                    </h4>
+                  )}{" "}
                 </div>
               )}
             </div>
