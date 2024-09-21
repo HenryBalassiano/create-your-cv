@@ -13,7 +13,7 @@ export default function Resume() {
       <div className="resume-wrapper">
         {resumeData.personalInfo.length > 0 &&
           resumeData.personalInfo.map((info) => (
-            <div className="personal-info-sec">
+            <div key={info.id} className="personal-info-sec">
               <div className="name">
                 {" "}
                 <h1>{info.name}</h1>

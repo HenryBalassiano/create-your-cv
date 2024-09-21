@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {ResumeData} from "../interfaces/ResumeProps";
+import {v4 as uuidv4} from "uuid";
 
 interface ResumeProviderProps {
   children: React.ReactNode;
@@ -22,6 +23,7 @@ function ResumeProvider({children}: ResumeProviderProps) {
         email: "",
         phone: "",
         address: "",
+        id: uuidv4(),
       },
     ],
   });

@@ -5,6 +5,8 @@ import "./App.css";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import useResumeContext from "./hooks/useResumeContext.tsx";
+import {PiDownloadSimple} from "react-icons/pi";
+
 export default function App() {
   const {resumeData} = useResumeContext();
   const cvRef = useRef<any>(null);
@@ -44,13 +46,21 @@ export default function App() {
             <Resume />
           </div>
           <div className="pdf-container">
-            <button id="download-pdf" onClick={downloadCVPdf}>
-              Download PDF
+            <button
+              id="download-pdf"
+              className="download-button"
+              onClick={downloadCVPdf}
+            >
+              <PiDownloadSimple className="download-icon" />
+              <span>Download PDF</span>
             </button>
           </div>
         </div>
       </div>
-      <EditSection />
+      <div className="edit-section">
+        {" "}
+        <EditSection />
+      </div>
     </div>
   );
 }

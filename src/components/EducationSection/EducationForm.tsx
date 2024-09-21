@@ -3,8 +3,13 @@ import "./EducationForm.css";
 import useResumeContext from "../../hooks/useResumeContext.tsx";
 import AddEducation from "./AddEducation";
 import {ResumeData, Education} from "../../interfaces/ResumeProps.ts";
+import {FaAngleDown} from "react-icons/fa";
+interface ToggleFormState {
+  [key: string]: boolean;
+}
 export default function EducationForm() {
   const {resumeData, setResumeData} = useResumeContext();
+  const [toggleForm, setToggleForm] = useState<ToggleFormState>({});
 
   const handleFormData = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -40,37 +45,70 @@ export default function EducationForm() {
       education: filteredEducation,
     }));
   };
+  const handleToggledForm = (id: string) => {
+    setToggleForm((prevState: any) => ({
+      ...prevState,
+      [id]: !toggleForm[id],
+    }));
+  };
+  console.log(toggleForm);
   return (
     <div className="education-form">
-      {resumeData.education.map((item, index) => (
-        <div key={index}>
+      {" "}
+      <h1 className="form-title">Education</h1>
+      {resumeData.education.map((item) => (
+        <div key={item.id}>
           <form>
-            <label>
-              Degree
-              <input
-                type="text"
-                name="degree"
-                onChange={(e) => handleFormData(e, item.id)}
+            {" "}
+            <h1 className="heading">
+              Education
+              <FaAngleDown
+                style={{cursor: "pointer"}}
+                onClick={() => handleToggledForm(item.id)}
               />
-            </label>
-            <label>
-              School
-              <input
-                type="text"
-                name="school"
-                onChange={(e) => handleFormData(e, item.id)}
-              />
-            </label>{" "}
-            <label>
-              City
-              <input
-                type="text"
-                name="location"
-                onChange={(e) => handleFormData(e, item.id)}
-              />
-            </label>{" "}
+            </h1>
+            <div
+              className={`${
+                toggleForm[item.id]
+                  ? "collapse-input-group"
+                  : "expand-input-group"
+              }`}
+            >
+              <div className="input-group">
+                <label>
+                  Degree
+                  <input
+                    type="text"
+                    name="degree"
+                    onChange={(e) => handleFormData(e, item.id)}
+                  />
+                </label>
+              </div>{" "}
+              <div className="input-group">
+                <label>
+                  School
+                  <input
+                    type="text"
+                    name="school"
+                    onChange={(e) => handleFormData(e, item.id)}
+                  />
+                </label>{" "}
+              </div>{" "}
+              <div className="input-group">
+                <label>
+                  City
+                  <input
+                    type="text"
+                    name="location"
+                    onChange={(e) => handleFormData(e, item.id)}
+                  />
+                </label>{" "}
+                <button onClick={(e) => deleteEducation(e, item.id)}>
+                  Delete
+                </button>
+              </div>{" "}
+            </div>
           </form>
-          <button onClick={(e) => deleteEducation(e, item.id)}>Delete</button>
         </div>
       ))}{" "}
       <AddEducation addNew={addNewEducation} />

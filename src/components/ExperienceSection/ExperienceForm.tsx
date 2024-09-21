@@ -3,12 +3,14 @@ import "./ExperienceForm.css";
 import {ResumeData, Experience} from "../../interfaces/ResumeProps";
 import AddExperience from "./AddExperience";
 import useResumeContext from "../../hooks/useResumeContext";
-interface ExperienceForm {
-  setResumeData: React.Dispatch<SetStateAction<ResumeData>>;
-  resumeData: ResumeData;
+import {FaAngleDown} from "react-icons/fa";
+interface ToggleFormState {
+  [key: string]: boolean;
 }
-export default function EducationForm() {
+export default function ExperienceForm() {
   const {resumeData, setResumeData} = useResumeContext();
+  const [toggleForm, setToggleForm] = useState<ToggleFormState>({});
+
   const handleFormData = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     id: string
@@ -42,46 +44,80 @@ export default function EducationForm() {
       experience: filterExperience,
     }));
   };
+  const handleToggledForm = (id: string) => {
+    setToggleForm((prevState: any) => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
+  };
+  console.log(toggleForm);
   return (
     <div className="experience-form">
-      {resumeData.experience.map((item, index) => (
-        <div key={index}>
+      <h1 className="form-title">Experience</h1>
+      {resumeData.experience.map((item) => (
+        <div key={item.id}>
           <form>
-            <label>
-              Position
-              <input
-                type="text"
-                name="position"
-                onChange={(e) => handleFormData(e, item.id)}
+            {" "}
+            <h1 className="heading">
+              Experience
+              <FaAngleDown
+                style={{cursor: "pointer"}}
+                onClick={() => handleToggledForm(item.id)}
               />
-            </label>
-            <label>
-              Company
-              <input
-                type="text"
-                name="company"
-                onChange={(e) => handleFormData(e, item.id)}
-              />
-            </label>{" "}
-            <label>
-              City
-              <input
-                type="text"
-                name="location"
-                onChange={(e) => handleFormData(e, item.id)}
-              />
-            </label>{" "}
-            <label>
-              Description
-              <textarea
-                name="description"
-                onChange={(e) => handleFormData(e, item.id)}
-              >
-                {" "}
-              </textarea>
-            </label>{" "}
+            </h1>
+            <div
+              className={`${
+                toggleForm[item.id]
+                  ? "expand-input-group"
+                  : "collapse-input-group"
+              }`}
+            >
+              <div className="input-group">
+                <label>
+                  Position{" "}
+                  <input
+                    type="text"
+                    name="position"
+                    onChange={(e) => handleFormData(e, item.id)}
+                  />
+                </label>{" "}
+              </div>{" "}
+              <div className="input-group">
+                <label>
+                  Company
+                  <input
+                    type="text"
+                    name="company"
+                    onChange={(e) => handleFormData(e, item.id)}
+                  />
+                </label>{" "}
+              </div>{" "}
+              <div className="input-group">
+                <label>
+                  City
+                  <input
+                    type="text"
+                    name="location"
+                    onChange={(e) => handleFormData(e, item.id)}
+                  />
+                </label>{" "}
+              </div>{" "}
+              <div className="input-group">
+                <label>
+                  Description
+                  <textarea
+                    name="description"
+                    onChange={(e) => handleFormData(e, item.id)}
+                  >
+                    {" "}
+                  </textarea>
+                </label>{" "}
+              </div>{" "}
+              <button onClick={(e) => deleteExperience(e, item.id)}>
+                Delete
+              </button>
+            </div>
           </form>
-          <button onClick={(e) => deleteExperience(e, item.id)}>Delete</button>
         </div>
       ))}{" "}
       <AddExperience addNew={addNewExperience} />

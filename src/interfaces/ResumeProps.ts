@@ -13,6 +13,7 @@ export interface Experience {
     email:string,
     phone: string,
     address:string 
+    id:string
   }
   export  interface Education {
     degree: string;

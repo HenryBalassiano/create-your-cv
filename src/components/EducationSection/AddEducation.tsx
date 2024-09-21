@@ -16,5 +16,9 @@ export default function AddEducation({addNew}: AddEducation) {
     };
     addNew(educationData);
   };
-  return <button onClick={addNewForm}>+ Add New</button>;
+  return (
+    <button id="add-new" onClick={addNewForm}>
+      + Add New
+    </button>
+  );
 }
