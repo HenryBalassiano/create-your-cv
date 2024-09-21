@@ -44,7 +44,11 @@ export default function ExperienceForm() {
       experience: filterExperience,
     }));
   };
-  const handleToggledForm = (id: string) => {
+  const handleToggledForm = (
+    e: React.MouseEvent<SVGElement | HTMLButtonElement, MouseEvent>,
+    id: string
+  ) => {
+    e.preventDefault();
     setToggleForm((prevState: any) => ({
       ...prevState,
       [id]: !prevState[id],
@@ -62,7 +66,7 @@ export default function ExperienceForm() {
               Experience
               <FaAngleDown
                 style={{cursor: "pointer"}}
-                onClick={() => handleToggledForm(item.id)}
+                onClick={(e) => handleToggledForm(e, item.id)}
               />
             </h1>
             <div
@@ -113,9 +117,20 @@ export default function ExperienceForm() {
                   </textarea>
                 </label>{" "}
               </div>{" "}
-              <button onClick={(e) => deleteExperience(e, item.id)}>
-                Delete
-              </button>
+              <div className="button-group">
+                <button
+                  id="delete"
+                  onClick={(e) => deleteExperience(e, item.id)}
+                >
+                  Delete
+                </button>{" "}
+                <button
+                  id="save"
+                  onClick={(e) => handleToggledForm(e, item.id)}
+                >
+                  Save
+                </button>
+              </div>
             </div>
           </form>
         </div>

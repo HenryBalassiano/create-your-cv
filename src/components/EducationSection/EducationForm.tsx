@@ -45,7 +45,11 @@ export default function EducationForm() {
       education: filteredEducation,
     }));
   };
-  const handleToggledForm = (id: string) => {
+  const handleToggledForm = (
+    e: React.MouseEvent<SVGElement | HTMLButtonElement, MouseEvent>,
+    id: string
+  ) => {
+    e.preventDefault();
     setToggleForm((prevState: any) => ({
       ...prevState,
       [id]: !toggleForm[id],
@@ -64,7 +68,7 @@ export default function EducationForm() {
               Education
               <FaAngleDown
                 style={{cursor: "pointer"}}
-                onClick={() => handleToggledForm(item.id)}
+                onClick={(e) => handleToggledForm(e, item.id)}
               />
             </h1>
             <div
@@ -103,9 +107,20 @@ export default function EducationForm() {
                     onChange={(e) => handleFormData(e, item.id)}
                   />
                 </label>{" "}
-                <button onClick={(e) => deleteEducation(e, item.id)}>
-                  Delete
-                </button>
+                <div className="button-group">
+                  <button
+                    id="delete"
+                    onClick={(e) => deleteEducation(e, item.id)}
+                  >
+                    Delete
+                  </button>{" "}
+                  <button
+                    id="save"
+                    onClick={(e) => handleToggledForm(e, item.id)}
+                  >
+                    Save
+                  </button>
+                </div>
               </div>{" "}
             </div>
           </form>

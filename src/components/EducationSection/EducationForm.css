@@ -60,7 +60,43 @@ input {
 
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+}
+#delete {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid rgba(0, 0, 0, 0.468);
+  margin: 0;
 
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+#delete:hover {
+  background-color: rgba(191, 0, 22, 0.903);
+  color: white;
+  border: 2px solid rgba(121, 154, 165, 0.468);
+}
+#save {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid rgba(0, 0, 0, 0.468);
+  margin: 0;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+#save:hover {
+  background-color: rgba(60, 3, 218, 0.581);
+  color: white;
+  border: 2px solid rgba(121, 154, 165, 0.468);
+}
 #add-new:hover {
   background-color: rgba(85, 94, 97, 0.468);
   color: white;

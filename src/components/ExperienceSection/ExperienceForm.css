@@ -53,6 +53,45 @@ input {
   align-items: center;
   justify-content: space-between;
 }
+#delete {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid rgba(0, 0, 0, 0.468);
+  margin: 0;
+
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.button-group {
+  display: flex;
+  justify-content: space-between; /* Distribute buttons equally */
+  width: 100%; /* Ensure it takes full width */
+  gap: 10px; /* Optional: Adds some space between buttons */
+}
+
+#save {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid rgba(0, 0, 0, 0.468);
+  margin: 0;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+#save:hover {
+  background-color: rgba(60, 3, 218, 0.581);
+  color: white;
+  border: 2px solid rgba(121, 154, 165, 0.468);
+}
+#delete:hover {
+  background-color: rgba(218, 3, 28, 0.581);
+  color: white;
+  border: 2px solid rgba(121, 154, 165, 0.468);
+}
+
 #add-new {
   padding: 12px 24px;
   font-size: 16px;
