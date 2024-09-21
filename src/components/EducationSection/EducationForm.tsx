@@ -84,6 +84,7 @@ export default function EducationForm() {
                   <input
                     type="text"
                     name="degree"
+                    value={item.degree}
                     onChange={(e) => handleFormData(e, item.id)}
                   />
                 </label>
@@ -94,6 +95,7 @@ export default function EducationForm() {
                   <input
                     type="text"
                     name="school"
+                    value={item.school}
                     onChange={(e) => handleFormData(e, item.id)}
                   />
                 </label>{" "}
@@ -104,6 +106,7 @@ export default function EducationForm() {
                   <input
                     type="text"
                     name="location"
+                    value={item.location}
                     onChange={(e) => handleFormData(e, item.id)}
                   />
                 </label>{" "}

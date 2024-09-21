@@ -82,6 +82,7 @@ export default function ExperienceForm() {
                   <input
                     type="text"
                     name="position"
+                    value={item.position}
                     onChange={(e) => handleFormData(e, item.id)}
                   />
                 </label>{" "}
@@ -92,6 +93,7 @@ export default function ExperienceForm() {
                   <input
                     type="text"
                     name="company"
+                    value={item.company}
                     onChange={(e) => handleFormData(e, item.id)}
                   />
                 </label>{" "}
@@ -102,6 +104,7 @@ export default function ExperienceForm() {
                   <input
                     type="text"
                     name="location"
+                    value={item.location}
                     onChange={(e) => handleFormData(e, item.id)}
                   />
                 </label>{" "}
@@ -111,6 +114,7 @@ export default function ExperienceForm() {
                   Description
                   <textarea
                     name="description"
+                    value={item.description}
                     onChange={(e) => handleFormData(e, item.id)}
                   >
                     {" "}
